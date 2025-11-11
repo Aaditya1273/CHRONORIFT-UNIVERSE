@@ -1,44 +1,566 @@
-CHRONORIFT UNIVERSE: SHATTERED EPOCH QUEST
-Venture into ChronoRift Universe, the AI-tormented puzzle odyssey where shattered epochs and rifts of reality summon cerebral cataclysms, crafting a multiverse from fragments of fate. As a rift-reclaimer in the fractured chronostream, you wield Tromoxite Tempests to traverse temporal tempests, forging epochal alliances to reclaim Bristonite epochs. Yet the rifts ravage: One errant epoch, and timelines tangle eternally. Will you reclaim the chronostream, stake your chronicle on OneChain, and seize supremacy over the epochs?
-💰 Rift, Mint, Reign: Every temporal tangle triumphed mints $CRU tokens—hoard for epoch enclaves, RWA epoch enhancements, or DeFi deluges. Puzzle for prowess, profit from perpetuity: Prime reclaimers auto-burn abundance for deflationary dawn, safeguarding your universe's unyielding. No frenzy, only fateful finesse! 🚀🔥
-⚙️ How It Works: The Epoch Entwined Enigma 🧩
-Driven by OneChain's temporal L1 (instant inferences, modular maelstroms), ChronoRift Universe interlaces invisible Web3 into intricate intrigues. OneWallet invocation? Ephemeral—social surge, gasless gales via abstraction, gesture-graceful for globetrotting guardians.
-AI-Shattered Streams: Spurn static sequences—our lithe gen-AI (Torch-tempered) summons singular space-time sieges per sojourn, attuned to your acuity: Entwined eternities for erudites, flux-frenzied fractals for flair. Each stream unveils universe unspooling—"The Shattered Chrono" via veiled visions (e.g., temporal tablets telling epoch enigmas).
-Epoch Evolved Enigmas & Anomalies:
+# 🌌 CHRONORIFT UNIVERSE: SHATTERED EPOCH QUEST
 
-Desert Drifts: Dawn doctrines—block-bind basics with budding bends.
-Lava Labyrinths: Liquid labyrinths where lava loops, ledges lurch, anti-chrono anomalies alter ages.
-New: Void Vortices: Verdict-vexing voids—epochs eclipse mid-maneuver, devouring domains demand deft drifts.
-New: Nebula Knots: Nexus nightmares with nettlesome nexuses (chrono cycles capture, spatial schisms spawn specters).
-Riftborn Reclaimers: Per epoch-end, an AI-altered arbiter (e.g., Lava Leviathan with labyrinthine levers)—enclave engines for ensemble enigmas.
+> **AI-Powered Blockchain Puzzle Odyssey on OneChain**  
+> Play-to-Earn • NFT Rewards • Dynamic AI • Multiplayer • DeFi Integration
 
-Epoch Ember Ensemble: Epochs eclipse scores—they're eternity. Accrue and alchemize:
+[![OneChain](https://img.shields.io/badge/OneChain-Testnet-orange)](https://onelabs.cc)
+[![Unity](https://img.shields.io/badge/Unity-WebGL-black)](https://unity.com)
+[![Move](https://img.shields.io/badge/Smart_Contracts-Move-blue)](https://move-language.github.io)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-🪙 Quartz: Query quanta, quaint quests.
-🟡 Solar: Surge solvers, swift surges.
-🟢 Aether: Anomaly alleviations (e.g., tempest twists).
-🔴 Nova: Noble nexuses for nebula nexuses.
-💠 Bristonite: Zenith zonals—mint as marketable NFTs (OneChain RWA rift: tokenize tangible treasures like temporal talismans as puzzle palettes).
-Stake $CRU to ascend (deflation deluge), or delve OneDEX depths for dormant DRU yields + enclave earnings.
+---
 
-🎮 Quests & Chrono Conundrums
-Unwind worlds, unravel riddles, unearth the Eternity Echo to escalate epochs—streams swell in subtlety (48+ sieges by stream 3), anomalies augment adversities (e.g., eclipse enigmas efface edges sans ether echoes). Solo? Synaptic 5-soul safeguard with saga scars. Enclave-entwined? Communal comebacks via on-chain oaths. Quest's quiescence? Your quanta quickens: On-chain oracles oracle outcomes, orbitals, and "echoes" (revisitable rift replays for rookies to riddle from realms).
-🔥 Riddle Ranks & Enclave Eternities
+## 📖 Table of Contents
 
-Solo Spectrum: Anomaly annihilations + epoch ember + swift streams = $CRU accruals.
-Enclave Escalation: Co-op confluences (x2 troves for tandem twists); chrono codices crown epochs echoed, with apex alliances amassing OneChain acclaim.
-5 Souls, Infinite Infinity: Deplete 'em? Dawn as "drift" with epoch embers—reignite via refined riddles. No nadir's net; every enigma elevates the expanse.
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [Game Worlds](#game-worlds)
+- [How to Play](#how-to-play)
+- [AI Systems](#ai-systems)
+- [GameFi Economy](#gamefi-economy)
+- [Multiplayer](#multiplayer)
+- [OneChain Integration](#onechain-integration)
+- [Smart Contracts](#smart-contracts)
+- [Installation](#installation)
+- [Deployment](#deployment)
+- [Architecture](#architecture)
 
-🛠️ Forged for OneHack 2.0: GameFi Galactics
-This epoch essence eclipses essentials: Enigmatic exemplar (Vite/Vortex, invocable in <5 cycles), exhaustive OneWallet orbit (oath, gasless gambits, RWA rifts), 2-min chrono chronicle (desert drift → lava lever → DeFi dominion), GitHub galaxy (with AI arcs & assays), and accord archive. All authentic, architected Nov 3-28 on OneChain Testnet (Chain ID: 0x[OneChain TBA]; Rift Record: 0x[Rendered]; $CRU Chrono: 0x[Rendered]).
-Wields OneChain's wonders: ⚡ Fleeting flux fixes, 🧩 Vast void vexes, 🔒 MPC-mantled epoch exchanges, 🌍 Gasless genesis, 💰 Yield-vaulted valuables via USDO umbras.
-🌟 Epoch Expansions: The Universe Unfurls
+---
 
-Enclave Eternity: Vital voids + PvP puzzle pits ($CRU wagers on warp wins).
-AI Awakening: Enigma-echoed arbiters that "assimilate" enclave elegance.
-Chrono Crossings: Rift relics to OneRWA for TradFi tethers; enclave eternities govern new nexuses.
-Rift Recalls: Cyclical OneHack omens—summit solvers stake singular NFTs.
+## 🎮 Overview
 
-Rift the Realms Now! 🚀
-Vortex rite: pnpm install → pnpm dev. Fork for OneChain fold; trial on their tome. Align with the anomalies—solo or stellar. In ChronoRift Universe, every enigma etches an eternity. Who's warped for the win?
-THANK YOU—UNRAVEL UNIVERSE! 😊
+**ChronoRift Universe** is an AI-powered puzzle game that combines classic puzzle-platformer gameplay with cutting-edge blockchain technology. Built on **OneChain**, players navigate through procedurally generated temporal rifts, collect Bristonite shards as NFTs, earn $CRU tokens, and compete on global leaderboards—all while an adaptive AI system ensures every puzzle is perfectly tailored to your skill level.
+
+### Key Highlights
+- 🤖 **AI-Generated Puzzles** - Every level is unique, generated by advanced AI
+- ⚡ **Dynamic Difficulty** - Adapts to your skill in real-time
+- 💰 **Play-to-Earn** - Earn $CRU tokens for completing levels
+- 🎨 **NFT Collectibles** - Bristonite shards as tradeable RWA NFTs
+- 🏆 **On-Chain Leaderboards** - Compete globally, verified on blockchain
+- 🤝 **Multiplayer** - Co-op and PvP modes
+- 📈 **DeFi Integration** - Staking, yield farming, and DEX trading
+
+---
+
+## 🌟 Key Features
+
+### **1. AI-Powered Content Generation**
+- **Procedural Levels** - Infinite unique puzzles
+- **Dynamic Difficulty Adjustment** - ELO-like skill rating system
+- **Adaptive Hints** - AI provides help when you're struggling
+- **8 Anomaly Types** - Anti-gravity, time dilation, spatial distortion, and more
+
+### **2. Blockchain Integration**
+- **OneChain Network** - Fast, low-cost transactions
+- **Move Smart Contracts** - Secure, efficient on-chain logic
+- **OneWallet** - Seamless wallet integration
+- **Gasless Transactions** - Play without worrying about gas fees
+
+### **3. GameFi Economy**
+- **$CRU Token** - Earn tokens for completing levels
+- **Staking** - 15% APY on staked tokens
+- **Yield Farming** - Up to 40% APY with liquidity provision
+- **Deflationary Tokenomics** - 2% burn on transactions, 10% on prizes
+- **OneDEX Trading** - Swap CRU/OCT pairs
+
+### **4. NFT System**
+- **Level Completion NFTs** - Proof of achievement
+- **Bristonite RWAs** - 5 rarity tiers (Quartz → Prime)
+- **Tradeable** - Buy/sell on OneChain marketplaces
+- **Upgradeable** - Enhance your NFTs
+
+### **5. Social Features**
+- **Global Leaderboard** - Top 100 rankings updated real-time
+- **Friends System** - Add friends, see online status
+- **Achievements** - 10+ achievements to unlock
+- **Player Profiles** - Showcase your stats
+
+### **6. Multiplayer**
+- **Co-op Mode** - 2 players work together
+- **PvP Mode** - 1v1 competitive races
+- **Team Battle** - 2v2 competitions
+- **Tournaments** - 8-player tournaments with prize pools
+
+---
+
+## 🌍 Game Worlds
+
+### **World 1: Desert Drifts** 🏜️
+- **Difficulty**: Beginner
+- **Mechanics**: Basic platforms, simple jumps
+- **Anomalies**: Anti-gravity fields, time slowdown
+- **Levels**: 1-4
+
+### **World 2: Lava Labyrinths** 🌋
+- **Difficulty**: Intermediate
+- **Mechanics**: Moving platforms, lava hazards, breakable platforms
+- **Anomalies**: Time speedup, moving voids
+- **Levels**: 5-8
+
+### **World 3: Void Vortices** 🕳️
+- **Difficulty**: Advanced
+- **Mechanics**: Disappearing platforms, void regions (instant death)
+- **Anomalies**: Invisible platforms, spatial distortion
+- **Levels**: 9-12
+
+### **World 4: Nebula Knots** 🌌
+- **Difficulty**: Expert
+- **Mechanics**: Temporal loops, spatial rifts, all previous mechanics
+- **Anomalies**: All anomaly types, temporal echoes
+- **Levels**: 13+
+
+---
+
+## 🎯 How to Play
+
+### **Controls**
+- **Arrow Keys / WASD** - Move left/right, jump, duck
+- **Space** - Activate Tromoxite Warp (special ability)
+- **ESC** - Pause game
+
+### **Objective**
+1. Navigate through temporal rifts
+2. Collect Bristonite shards (🪙🟡🟢🔴💠)
+3. Reach the epoch portal
+4. Earn $CRU tokens
+5. Mint NFTs for completed levels
+
+### **Gameplay Loop**
+```
+Start Level → Navigate Puzzles → Collect Bristonite → 
+Complete Level → Earn CRU → Mint NFT → Climb Leaderboard
+```
+
+---
+
+## 🤖 AI Systems
+
+### **1. AI Puzzle Generator**
+- Generates unique puzzles based on player skill
+- 8 element types (platforms, teleports, gravity zones, etc.)
+- 8 anomaly types for increased challenge
+- Complexity curves for balanced difficulty
+
+### **2. Dynamic Difficulty AI**
+- Tracks performance across 50+ attempts
+- ELO-like skill rating (10-100)
+- Adjusts difficulty based on:
+  - Success rate
+  - Completion time
+  - Consecutive failures/successes
+- Provides adaptive hints
+
+### **3. Procedural Level Generator**
+- Complete level generation with:
+  - Platform placement
+  - Hazard distribution
+  - Collectible spawning
+  - Checkpoint creation
+- Ensures playable paths
+- World-appropriate content
+
+### **4. AI Game Director**
+- Coordinates all AI systems
+- Manages progression
+- Tracks statistics
+- Provides comprehensive reports
+
+---
+
+## 💰 GameFi Economy
+
+### **$CRU Token**
+- **Total Supply**: Dynamic (deflationary)
+- **Decimals**: 9
+- **Earn Rate**: 0.1 CRU per level completion
+- **Use Cases**:
+  - Staking for rewards
+  - Tournament entry fees
+  - NFT purchases
+  - Liquidity provision
+
+### **Tokenomics**
+```
+Level Completion → 0.1 CRU Reward
+Transaction → 2% Burned
+Prize Pool → 90% to Winner, 10% Burned
+Staking → 15% APY
+Liquidity Mining → 25% Bonus APY
+```
+
+### **DeFi Features**
+1. **Staking Pool**
+   - Stake CRU for 15% APY
+   - Claim rewards anytime
+   - Unstake with no lock period
+
+2. **Yield Farming**
+   - Provide CRU/OCT liquidity
+   - Earn up to 40% APY
+   - Auto-compounding available
+
+3. **OneDEX Integration**
+   - Swap CRU ↔ OCT
+   - Add/remove liquidity
+   - Real-time price updates
+
+4. **Prize Pools**
+   - Enter tournaments with CRU
+   - Winner takes 90% of pool
+   - 10% burned (deflationary)
+
+### **RWA NFTs (Bristonite)**
+| Type | Rarity | Value | Use |
+|------|--------|-------|-----|
+| 🪙 Quartz | Common | 0.01 CRU | Basic puzzles |
+| 🟡 Solar | Uncommon | 0.05 CRU | Enhanced abilities |
+| 🟢 Aether | Rare | 0.1 CRU | Anomaly resistance |
+| 🔴 Nova | Epic | 0.5 CRU | Advanced mechanics |
+| 💠 Prime | Legendary | 1 CRU | Ultimate power |
+
+---
+
+## 🤝 Multiplayer
+
+### **Game Modes**
+
+#### **Co-op Mode** (2 Players)
+- Work together to solve puzzles
+- Share Bristonite collection
+- 2x CRU rewards
+
+#### **PvP Mode** (1v1)
+- Race to complete level first
+- Winner takes prize pool
+- Ranked matchmaking
+
+#### **Team Battle** (2v2)
+- Team vs team competition
+- Combined scores
+- Team leaderboards
+
+#### **Tournament** (8 Players)
+- Bracket-style elimination
+- Large prize pools
+- Seasonal events
+
+### **Matchmaking**
+- **Quick Match** - Find random opponent
+- **Room Codes** - Play with friends
+- **Ranked** - Competitive ladder
+- **Custom** - Create private rooms
+
+---
+
+## 🔗 OneChain Integration
+
+### **Network Details**
+- **Network**: OneChain Testnet
+- **RPC**: `https://rpc-testnet.onelabs.cc:443`
+- **Chain ID**: `onechain-testnet`
+- **Explorer**: OneChain Explorer
+
+### **Smart Contracts**
+
+#### **1. CRU Token** (`cru_token.move`)
+```move
+module chronorift::cru_token {
+    // Mint rewards for level completion
+    public entry fun mint_reward(
+        treasury: &mut CRUTreasury,
+        amount: u64,
+        recipient: address,
+        ctx: &mut TxContext
+    )
+    
+    // Burn tokens (deflationary)
+    public entry fun burn_tokens(
+        treasury: &mut CRUTreasury,
+        coins: Coin<CRU>,
+    )
+}
+```
+
+#### **2. Level NFT** (`level_nft.move`)
+```move
+module chronorift::level_nft {
+    // Mint NFT for level completion
+    public entry fun mint_level_nft(
+        progress: &mut PlayerProgress,
+        level_id: u64,
+        world_name: vector<u8>,
+        score: u64,
+        metadata_uri: vector<u8>,
+        ctx: &mut TxContext
+    )
+}
+```
+
+#### **3. Staking Pool** (`staking_pool.move`)
+```move
+module chronorift::staking_pool {
+    // Stake CRU tokens
+    public entry fun stake_tokens(
+        pool: &mut StakingPool,
+        tokens: Coin<CRU>,
+        ctx: &mut TxContext
+    )
+    
+    // Claim staking rewards
+    public entry fun claim_rewards(
+        pool: &mut StakingPool,
+        stake: &mut StakeRecord,
+        ctx: &mut TxContext
+    )
+}
+```
+
+#### **4. Leaderboard** (`leaderboard.move`)
+```move
+module chronorift::leaderboard {
+    // Record level completion
+    public entry fun record_level_completion(
+        leaderboard: &mut Leaderboard,
+        stats: &mut PlayerStats,
+        level_id: u64,
+        score: u64,
+        ctx: &mut TxContext
+    )
+}
+```
+
+---
+
+## 🚀 Installation
+
+### **Prerequisites**
+- Unity 2021.3+ (for development)
+- OneWallet browser extension
+- OneChain testnet OCT tokens
+
+### **Quick Start**
+
+1. **Clone Repository**
+```bash
+git clone https://github.com/yourusername/chronorift-universe.git
+cd chronorift-universe
+```
+
+2. **Open in Unity**
+- Open Unity Hub
+- Add project from disk
+- Select `chronorift-universe` folder
+- Open with Unity 2021.3+
+
+3. **Build for WebGL**
+```
+File → Build Settings → WebGL → Build
+```
+
+4. **Deploy Smart Contracts**
+```bash
+cd move
+one move build
+one client publish --gas-budget 100000000
+```
+
+5. **Update Configuration**
+- Open `integration scripts/OneChainConfig.cs`
+- Add your package ID and object IDs
+
+6. **Run Game**
+- Open `index.html` in browser
+- Connect OneWallet
+- Start playing!
+
+---
+
+## 📦 Deployment
+
+### **Deploy to Web**
+
+1. **Build Unity WebGL**
+```
+File → Build Settings → WebGL → Build
+```
+
+2. **Upload to Hosting**
+- Upload `Build` folder to web server
+- Upload `index.html` and `TemplateData`
+- Ensure HTTPS for OneWallet
+
+3. **Configure OneChain**
+- Update RPC endpoint in `index.html`
+- Set package IDs in `OneChainConfig.cs`
+
+### **Deploy Smart Contracts**
+
+1. **Build Contracts**
+```bash
+cd move
+one move build
+```
+
+2. **Publish to OneChain**
+```bash
+one client publish --gas-budget 100000000
+```
+
+3. **Initialize Contracts**
+```bash
+# Create staking pool
+one client call --package <PACKAGE_ID> --module staking_pool --function create_staking_pool --args 1000
+
+# Create leaderboard
+one client call --package <PACKAGE_ID> --module leaderboard --function create_leaderboard
+```
+
+4. **Save Object IDs**
+- Copy all object IDs from deployment
+- Update `OneChainConfig.cs`
+
+---
+
+## 🏗️ Architecture
+
+### **Project Structure**
+```
+chronorift-universe/
+├── Build/                      # Unity WebGL build
+│   ├── Temporal Odyssey.data
+│   ├── Temporal Odyssey.framework.js
+│   ├── Temporal Odyssey.loader.js
+│   └── Temporal Odyssey.wasm
+├── integration scripts/        # C# scripts for blockchain
+│   ├── OneChainConfig.cs      # Configuration
+│   ├── WalletConnector.cs     # OneWallet integration
+│   ├── NFTMinter.cs           # NFT minting
+│   ├── CRUTokenManager.cs     # Token management
+│   ├── StakingManager.cs      # Staking logic
+│   ├── AIPuzzleGenerator.cs   # AI puzzle generation
+│   ├── DynamicDifficultyAI.cs # Difficulty adjustment
+│   ├── ProceduralLevelGenerator.cs # Level generation
+│   ├── LeaderboardUI.cs       # Leaderboard display
+│   ├── SocialFeatures.cs      # Social system
+│   ├── MultiplayerManager.cs  # Multiplayer
+│   └── ...
+├── move/                       # Move smart contracts
+│   ├── Move.toml
+│   └── sources/
+│       ├── cru_token.move
+│       ├── level_nft.move
+│       ├── staking_pool.move
+│       └── leaderboard.move
+├── index.html                  # Game entry point
+├── OneWalletBridge.jslib      # JavaScript bridge
+└── README.md                   # This file
+```
+
+### **Technology Stack**
+- **Game Engine**: Unity 2021.3+ (WebGL)
+- **Language**: C# (Unity scripts)
+- **Blockchain**: OneChain (Move)
+- **Wallet**: OneWallet
+- **Frontend**: HTML5, JavaScript
+- **Smart Contracts**: Move Language
+
+---
+
+## 📊 Game Statistics
+
+- **Worlds**: 4 (Desert, Lava, Void, Nebula)
+- **Levels**: 12+ (procedurally generated)
+- **Puzzle Elements**: 8 types
+- **Anomalies**: 8 types
+- **Collectibles**: 7 types
+- **Achievements**: 10+
+- **Game Modes**: 4 (Solo, Co-op, PvP, Tournament)
+
+---
+
+## 🎯 Roadmap
+
+### **Phase 1: Core Game** ✅
+- AI puzzle generation
+- Dynamic difficulty
+- Level completion NFTs
+- $CRU token rewards
+
+### **Phase 2: GameFi** ✅
+- Staking pools
+- Yield farming
+- OneDEX integration
+- Deflationary tokenomics
+
+### **Phase 3: Social** ✅
+- Leaderboards
+- Friends system
+- Achievements
+- Player profiles
+
+### **Phase 4: Multiplayer** ✅
+- Co-op mode
+- PvP mode
+- Tournaments
+- Matchmaking
+
+### **Phase 5: Future**
+- Mobile version
+- More worlds
+- Seasonal events
+- DAO governance
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please:
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🔗 Links
+
+- **OneChain**: [https://onelabs.cc](https://onelabs.cc)
+- **OneChain Docs**: [https://docs.onelabs.cc](https://docs.onelabs.cc)
+- **OneWallet**: Browser extension for OneChain
+- **OneChain Faucet**: Get testnet OCT tokens
+
+---
+
+## 🙏 Acknowledgments
+
+- OneChain team for blockchain infrastructure
+- Unity team for the game engine
+- Move language community
+
+---
+
+## 📞 Support
+
+For support, please:
+- Open an issue on GitHub
+- Join our Discord community
+- Contact us on Twitter
+
+---
+
+<div align="center">
+
+**Built with ❤️ on OneChain for OneHack 2.0**
+
+*Venture into ChronoRift Universe. Every enigma etches an eternity.*
+
+🌌 **Rift the Realms Now!** 🚀
+
+</div>
