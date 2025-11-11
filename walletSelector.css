@@ -1,0 +1,302 @@
+/**
+ * Sui/OneChain Wallet Selector Styles
+ */
+
+/* Modal Overlay */
+.wallet-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Modal Content */
+.wallet-modal-content {
+    background: linear-gradient(135deg, #1e1e2e 0%, #2a2a3e 100%);
+    border-radius: 24px;
+    padding: 0;
+    max-width: 480px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: slideUp 0.3s ease;
+    overflow: hidden;
+}
+
+/* Modal Header */
+.wallet-modal-header {
+    padding: 24px 32px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wallet-modal-header h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.wallet-modal-close {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 32px;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.wallet-modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+}
+
+/* Modal Body */
+.wallet-modal-body {
+    padding: 24px 32px;
+}
+
+.wallet-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 20px 0;
+    font-size: 14px;
+}
+
+/* Wallet List */
+.wallet-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Wallet Item */
+.wallet-item {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid transparent;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    gap: 16px;
+}
+
+.wallet-item.available:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #667eea;
+    transform: translateX(4px);
+}
+
+.wallet-item.unavailable {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.wallet-item.unavailable:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Wallet Icon */
+.wallet-icon-large {
+    font-size: 32px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+}
+
+/* Wallet Info */
+.wallet-info {
+    flex: 1;
+}
+
+.wallet-name {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.wallet-status {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+}
+
+.wallet-item.available .wallet-status {
+    color: #10b981;
+}
+
+/* Wallet Arrow */
+.wallet-arrow {
+    color: #667eea;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.wallet-install {
+    color: #667eea;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    background: rgba(102, 126, 234, 0.2);
+    border-radius: 8px;
+}
+
+/* Modal Footer */
+.wallet-modal-footer {
+    padding: 20px 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.wallet-info {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+    margin: 0;
+    text-align: center;
+}
+
+.wallet-info a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.wallet-info a:hover {
+    text-decoration: underline;
+}
+
+/* Connect Button */
+.sui-connect-button {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.sui-connect-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.sui-connect-button:active {
+    transform: translateY(0);
+}
+
+.wallet-icon {
+    font-size: 20px;
+}
+
+.wallet-text {
+    font-size: 14px;
+}
+
+/* Notification */
+.wallet-notification {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .wallet-modal-content {
+        max-width: 95%;
+        margin: 20px;
+    }
+    
+    .wallet-modal-header,
+    .wallet-modal-body,
+    .wallet-modal-footer {
+        padding: 20px;
+    }
+    
+    .wallet-modal-header h2 {
+        font-size: 20px;
+    }
+    
+    .wallet-item {
+        padding: 14px 16px;
+    }
+    
+    .wallet-icon-large {
+        font-size: 28px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .wallet-name {
+        font-size: 14px;
+    }
+    
+    .sui-connect-button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+/* Dark theme adjustments */
+@media (prefers-color-scheme: dark) {
+    .wallet-modal-content {
+        background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+    }
+}
