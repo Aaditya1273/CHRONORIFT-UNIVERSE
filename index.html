@@ -4,9 +4,78 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Temporal Odyssey</title>
+    <title>ChronoRift Universe - Shattered Epoch Quest</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+
+    <!-- OneChain SDK -->
+    <script src="https://unpkg.com/@mysten/sui.js@latest/dist/index.global.js"></script>
+    
+    <!-- OneWallet Adapter -->
+    <script>
+        // OneChain Configuration
+        window.oneChainConfig = {
+            rpcUrl: 'https://rpc-testnet.onelabs.cc:443',
+            chainId: 'onechain-testnet',
+            networkType: 'testnet'
+        };
+
+        // Initialize OneWallet connection
+        window.oneWallet = {
+            connected: false,
+            address: null,
+            
+            // Check if OneWallet extension is installed
+            isInstalled: function() {
+                return typeof window.suiWallet !== 'undefined';
+            },
+            
+            // Connect to OneWallet
+            connect: async function() {
+                if (!this.isInstalled()) {
+                    throw new Error('OneWallet extension not found. Please install OneWallet.');
+                }
+                
+                try {
+                    const accounts = await window.suiWallet.requestPermissions();
+                    if (accounts && accounts.length > 0) {
+                        this.connected = true;
+                        this.address = accounts[0];
+                        console.log('OneWallet connected:', this.address);
+                        return [this.address];
+                    }
+                    throw new Error('No accounts found');
+                } catch (error) {
+                    console.error('OneWallet connection failed:', error);
+                    throw error;
+                }
+            },
+            
+            // Get connected accounts
+            getAccounts: async function() {
+                if (!this.connected) {
+                    return [];
+                }
+                return [this.address];
+            },
+            
+            // Sign and execute transaction
+            signAndExecuteTransactionBlock: async function(params) {
+                if (!this.connected) {
+                    throw new Error('Wallet not connected');
+                }
+                
+                try {
+                    const result = await window.suiWallet.signAndExecuteTransactionBlock(params);
+                    console.log('Transaction executed:', result);
+                    return result;
+                } catch (error) {
+                    console.error('Transaction failed:', error);
+                    throw error;
+                }
+            }
+        };
+    </script>
 
     <!-- Include GamepadRumble.js script -->
     <script src="GamepadRumble.js"></script>

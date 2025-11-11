@@ -1,14 +1,8 @@
 using System.Collections;
-using System.Numerics;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Networking;
-using Nethereum.Hex.HexTypes;
-using Nethereum.Unity.Contracts;
-using Nethereum.Unity.Rpc;
-using Nethereum.Contracts;
-using Nethereum.ABI.FunctionEncoding.Attributes;
-using Unity.VisualScripting;
+using TMPro;
 
 public class NFTMinter : MonoBehaviour
 {
@@ -16,195 +10,168 @@ public class NFTMinter : MonoBehaviour
     public WalletStore walletStore;
 
     [Header("Minting Settings")]
-    [Tooltip("Level ID for minting (as string). Can be set externally.")]
+    [Tooltip("Level ID for minting")]
     public string levelIdToMint;
-    [Tooltip("Metadata URI for minting. Can be set externally.")]
+    [Tooltip("World name (Desert, Lava, Space)")]
+    public string worldName;
+    [Tooltip("Score achieved")]
+    public string scoreAchieved;
+    [Tooltip("Metadata URI for minting")]
     public string metadataURIToMint;
 
-    [Header("Contract Settings")]
-    [Tooltip("RPC endpoint for non-WebGL testing")]
-    public string rpcURL = "https://rpc.test2.btcs.network/";
-    [Tooltip("Test account private key (do not hardcode sensitive info)")]
-    public string testPrivateKey = "";
-    [Tooltip("Chain ID for non-WebGL testing")]
-    public BigInteger chainId = 444444444500;
-    [Tooltip("NFT contract address")]
-    public string contractAddress = "0x72b0e0C76cd6Ae41979B728282C3e748D0C2A278";
+    [Header("OneChain Contract Settings")]
+    [Tooltip("OneChain RPC endpoint")]
+    public string rpcURL = "https://rpc-testnet.onelabs.cc:443";
+    [Tooltip("Package ID (deployed Move contracts)")]
+    public string packageId = "";
+    [Tooltip("Player Progress Object ID")]
+    public string playerProgressId = "";
 
     [Header("Optional UI Elements")]
     public Button mintNFTButton;      // Optionally call minting from a UI button.
     public Button fetchNFTsButton;    // Optionally call fetching from a UI button.
     public Transform nftListView;     // Container for NFT images if needed.
 
+    // JavaScript interop for OneChain transactions
+    [DllImport("__Internal")]
+    private static extern void SendOneChainTransaction(string gameObjectName, string txData, string callbackMethod, string errorMethod);
+
     void Start()
     {
         if (mintNFTButton != null)
-            mintNFTButton.onClick.AddListener(() => StartCoroutine(MintNFT()));
+            mintNFTButton.onClick.AddListener(() => MintNFT());
         if (fetchNFTsButton != null)
-            fetchNFTsButton.onClick.AddListener(() => StartCoroutine(FetchAvailableNFTs()));
+            fetchNFTsButton.onClick.AddListener(() => FetchPlayerNFTs());
 
         walletStore = FindFirstObjectByType<WalletStore>();
     }
 
-    public void MintNFTWithCoroutine(string levelTOMintId, string metadataURIMint)
+    public void MintNFTWithParams(string levelId, string world, string score, string metadataURI)
     {
-        levelIdToMint = levelTOMintId;
-        metadataURIToMint = metadataURIMint;
-        StartCoroutine(MintNFT());
+        levelIdToMint = levelId;
+        worldName = world;
+        scoreAchieved = score;
+        metadataURIToMint = metadataURI;
+        MintNFT();
     }
 
     /// <summary>
-    /// Mints an NFT using the preset public strings.
-    /// You can also call MintNFT(string levelId, string metadataURI) externally.
+    /// Mints an NFT on OneChain by calling the Move contract
     /// </summary>
-    public IEnumerator MintNFT()
+    public void MintNFT()
     {
-        yield return MintNFT(levelIdToMint, metadataURIToMint);
-        Debug.Log("Mint Data: " + levelIdToMint + " " + metadataURIToMint);
-    }
-
-    /// <summary>
-    /// Mints an NFT using provided levelId and metadataURI.
-    /// </summary>
-    public IEnumerator MintNFT(string levelId, string metadataURI)
-    {
-        var contractTransactionUnityRequest = GetContractTransactionUnityRequest();
-        if (contractTransactionUnityRequest != null)
+        if (string.IsNullOrEmpty(packageId))
         {
-            var mintFunction = new MintNFTFunction()
-            {
-                Player = walletStore.PermaWalletAddressText.text,
-                LevelId = BigInteger.Parse(levelId),
-                MetadataURI = metadataURI
-            };
-
-            yield return contractTransactionUnityRequest.SignAndSendTransaction<MintNFTFunction>(mintFunction, contractAddress);
-            if (contractTransactionUnityRequest.Exception == null)
-            {
-                Debug.Log("Minting successful. Transaction hash: " + contractTransactionUnityRequest.Result);
-            }
-            else
-            {
-                Debug.Log("error");
-            }
+            Debug.LogError("Package ID not set! Deploy Move contracts first.");
+            return;
         }
-    }
 
-    /// <summary>
-    /// Fetches available NFTs for the connected wallet.
-    /// Assumes the contract implements a view function 'getNFTsOfPlayer(address player)' returning an array of uint256.
-    /// </summary>
-    public IEnumerator FetchAvailableNFTs()
-    {
-        // If you only need to read data, you can omit the dataAccountKey 
-        // and chainId by passing null. For example:
-        // var queryRequest = new QueryUnityRequest<GetNFTsOfPlayerFunction, GetNFTsOfPlayerOutputDTO>(
-        //     rpcURL
-        // );
-
-        // If you want to specify the 'from' address (dataAccountKey) or chain ID:
-        var queryRequest = new QueryUnityRequest<GetNFTsOfPlayerFunction, GetNFTsOfPlayerOutputDTO>(
-            rpcURL,
-            walletStore.PermaWalletAddressText.text   // dataAccountKey (optional)
-        );
-
-        var getNFTsFunction = new GetNFTsOfPlayerFunction
+        if (string.IsNullOrEmpty(playerProgressId))
         {
-            Player = walletStore.PermaWalletAddressText.text
-        };
-
-        // Perform the query
-        yield return queryRequest.Query(getNFTsFunction, contractAddress);
-
-        // Check for exceptions
-        if (queryRequest.Exception == null)
-        {
-            var result = queryRequest.Result;
-            if (result.TokenIds != null)
-            {
-                string tokenList = "Player NFTs: ";
-                foreach (var tokenId in result.TokenIds)
-                {
-                    tokenList += tokenId.ToString() + " ";
-                }
-                Debug.Log(tokenList);
-                // Optionally, update UI images based on the token IDs.
-            }
+            Debug.LogError("Player Progress ID not set! Create player progress first.");
+            return;
         }
-        else
-        {
-            Debug.Log("error");
-        }
-    }
 
-    public IUnityRpcRequestClientFactory GetUnityRpcRequestClientFactory()
-    {
+        // Build Move transaction for minting NFT
+        string txData = BuildMintTransaction();
+        
 #if UNITY_WEBGL && !UNITY_EDITOR
-        if (Nethereum.Unity.Metamask.MetamaskWebglInterop.IsMetamaskAvailable())
-        {
-            return new Nethereum.Unity.Metamask.MetamaskWebglCoroutineRequestRpcClientFactory(walletStore.PermaWalletAddressText.text, null, 1000);
-        }
-        else
-        {
-            // walletConnector.DisplayError("Metamask is not available, please install it");
-            return null;
-        }
+        SendOneChainTransaction(gameObject.name, txData, nameof(OnMintSuccess), nameof(OnMintError));
 #else
-        return new UnityWebRequestRpcClientFactory(rpcURL);
+        Debug.Log("Minting is only available on WebGL builds");
+        Debug.Log("Transaction data: " + txData);
 #endif
     }
 
-    public IContractTransactionUnityRequest GetContractTransactionUnityRequest()
+    private string BuildMintTransaction()
     {
+        // Build transaction to call level_nft::mint_level_nft
+        string tx = @"{
+            ""kind"": ""moveCall"",
+            ""data"": {
+                ""packageObjectId"": """ + packageId + @""",
+                ""module"": ""level_nft"",
+                ""function"": ""mint_level_nft"",
+                ""arguments"": [
+                    """ + playerProgressId + @""",
+                    " + levelIdToMint + @",
+                    """ + worldName + @""",
+                    " + scoreAchieved + @",
+                    """ + metadataURIToMint + @"""
+                ],
+                ""gasBudget"": 10000000
+            }
+        }";
+        
+        return tx;
+    }
+
+    public void OnMintSuccess(string result)
+    {
+        Debug.Log("NFT Minted Successfully!");
+        Debug.Log("Transaction Result: " + result);
+        // You can parse the result and update UI here
+    }
+
+    public void OnMintError(string error)
+    {
+        Debug.LogError("Minting Failed: " + error);
+    }
+
+    /// <summary>
+    /// Fetches player's NFTs from OneChain
+    /// </summary>
+    public void FetchPlayerNFTs()
+    {
+        if (walletStore == null || string.IsNullOrEmpty(walletStore.PermaWalletAddressText.text))
+        {
+            Debug.LogError("Wallet not connected!");
+            return;
+        }
+
+        string playerAddress = walletStore.PermaWalletAddressText.text;
+        Debug.Log("Fetching NFTs for player: " + playerAddress);
+        
+        // Query OneChain for player's NFTs
+        // This would use the OneChain RPC to query owned objects
+        // Implementation depends on OneChain SDK
+        
+        Debug.Log("NFT fetching feature - coming soon!");
+    }
+
+    /// <summary>
+    /// Create player progress on OneChain (first time setup)
+    /// </summary>
+    public void CreatePlayerProgress()
+    {
+        if (string.IsNullOrEmpty(packageId))
+        {
+            Debug.LogError("Package ID not set!");
+            return;
+        }
+
+        string tx = @"{
+            ""kind"": ""moveCall"",
+            ""data"": {
+                ""packageObjectId"": """ + packageId + @""",
+                ""module"": ""level_nft"",
+                ""function"": ""create_player_progress"",
+                ""arguments"": [],
+                ""gasBudget"": 10000000
+            }
+        }";
+
 #if UNITY_WEBGL && !UNITY_EDITOR
-        if (Nethereum.Unity.Metamask.MetamaskWebglInterop.IsMetamaskAvailable())
-        {
-            return new Nethereum.Unity.Metamask.MetamaskTransactionCoroutineUnityRequest(walletStore.PermaWalletAddressText.text, GetUnityRpcRequestClientFactory());
-        }
-        else
-        {
-            // walletConnector.DisplayError("Metamask is not available, please install it");
-            return null;
-        }
+        SendOneChainTransaction(gameObject.name, tx, nameof(OnProgressCreated), nameof(OnMintError));
 #else
-        return new TransactionSignedUnityRequest(rpcURL, testPrivateKey, chainId);
+        Debug.Log("Create progress is only available on WebGL builds");
 #endif
     }
-}
 
-/// <summary>
-/// Represents the mintNFT function call.
-/// Solidity: function mintNFT(address player, uint256 levelId, string metadataURI) public returns (uint256)
-/// </summary>
-[Function("mintNFT", "uint256")]
-public class MintNFTFunction : FunctionMessage
-{
-    [Parameter("address", "player", 1)]
-    public string Player { get; set; }
-
-    [Parameter("uint256", "levelId", 2)]
-    public BigInteger LevelId { get; set; }
-
-    [Parameter("string", "metadataURI", 3)]
-    public string MetadataURI { get; set; }
-}
-
-/// <summary>
-/// Represents the query function to get NFTs for a player.
-/// Solidity: function getNFTsOfPlayer(address player) public view returns (uint256[])
-/// </summary>
-[Function("getNFTsOfPlayer", typeof(GetNFTsOfPlayerOutputDTO))]
-public class GetNFTsOfPlayerFunction : FunctionMessage
-{
-    [Parameter("address", "player", 1)]
-    public string Player { get; set; }
-}
-
-/// <summary>
-/// Output DTO for getNFTsOfPlayer function.
-/// </summary>
-public class GetNFTsOfPlayerOutputDTO : IFunctionOutputDTO
-{
-    [Parameter("uint256[]", "", 1)]
-    public System.Collections.Generic.List<BigInteger> TokenIds { get; set; }
+    public void OnProgressCreated(string result)
+    {
+        Debug.Log("Player Progress Created!");
+        Debug.Log("Result: " + result);
+        // Parse result to get the playerProgressId and store it
+    }
 }

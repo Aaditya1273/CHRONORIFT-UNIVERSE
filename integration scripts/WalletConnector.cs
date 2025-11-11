@@ -1,16 +1,13 @@
 using System;
-using System.Numerics;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
-using Nethereum.Hex.HexTypes;
-using Nethereum.Unity.Metamask;
-using Nethereum.Metamask;
 using TMPro;
 
 public class WalletConnector : MonoBehaviour
 {
     [Header("Wallet UI Elements")]
-    public Button metamaskConnectButton;
+    public Button walletConnectButton;
     public TMP_Text accountSelectedLabel;  // Displays the connected account
     public TMP_Text errorLabel;            // Displays error messages
     public TMP_Text walletAddressTMPText;  // Also displays the connected account
@@ -21,8 +18,8 @@ public class WalletConnector : MonoBehaviour
 
     // Internal state variables
     private string selectedAccountAddress;
-    public bool isMetamaskInitialised = false;
-    public BigInteger currentChainId = 1114;
+    public bool isWalletInitialised = false;
+    public string currentChainId = "onechain-testnet";
 
     private WalletStore walletStore;
 
@@ -31,10 +28,20 @@ public class WalletConnector : MonoBehaviour
         walletStore = FindAnyObjectByType<WalletStore>();
     }
 
+    // JavaScript interop for OneWallet
+    [DllImport("__Internal")]
+    private static extern void ConnectOneWallet(string gameObjectName, string callbackMethod, string errorMethod);
+
+    [DllImport("__Internal")]
+    private static extern void GetOneWalletAddress(string gameObjectName, string callbackMethod);
+
+    [DllImport("__Internal")]
+    private static extern bool IsOneWalletAvailable();
+
     void Start()
     {
-        if (metamaskConnectButton != null)
-            metamaskConnectButton.onClick.AddListener(() => ConnectWallet());
+        if (walletConnectButton != null)
+            walletConnectButton.onClick.AddListener(() => ConnectWallet());
     }
 
     public void ConnectWallet()
@@ -43,39 +50,32 @@ public class WalletConnector : MonoBehaviour
             errorLabel.gameObject.SetActive(false);
 
 #if UNITY_WEBGL && !UNITY_EDITOR
-        if (MetamaskWebglInterop.IsMetamaskAvailable())
+        if (IsOneWalletAvailable())
         {
-            MetamaskWebglInterop.EnableEthereum(gameObject.name, nameof(EthereumEnabled), nameof(DisplayError));
+            ConnectOneWallet(gameObject.name, nameof(WalletConnected), nameof(DisplayError));
         }
         else
         {
-            DisplayError("Metamask is not available, please install it");
+            DisplayError("OneWallet is not available, please install it");
         }
 #else
         DisplayError("ConnectWallet is only available on WebGL builds.");
 #endif
     }
 
-    public void EthereumEnabled(string addressSelected)
+    public void WalletConnected(string addressSelected)
     {
-#if UNITY_WEBGL && !UNITY_EDITOR
-        if (!isMetamaskInitialised)
+        if (!isWalletInitialised)
         {
-            MetamaskWebglInterop.EthereumInit(gameObject.name, nameof(NewAccountSelected), nameof(ChainChanged));
-            MetamaskWebglInterop.GetChainId(gameObject.name, nameof(ChainChanged), nameof(DisplayError));
-            isMetamaskInitialised = true;
+            isWalletInitialised = true;
         }
         NewAccountSelected(addressSelected);
-#else
-        NewAccountSelected(addressSelected);
-#endif
     }
 
     public void ChainChanged(string chainId)
     {
-        Debug.Log(chainId);
-        currentChainId = new HexBigInteger(chainId).Value;
-        // You can add additional chain-change handling here if needed.
+        Debug.Log("OneChain Network: " + chainId);
+        currentChainId = chainId;
     }
 
     public void NewAccountSelected(string accountAddress)
