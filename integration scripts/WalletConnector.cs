@@ -38,10 +38,47 @@ public class WalletConnector : MonoBehaviour
     [DllImport("__Internal")]
     private static extern bool IsOneWalletAvailable();
 
+    [DllImport("__Internal")]
+    private static extern string GetPreConnectedWallet();
+
     void Start()
     {
         if (walletConnectButton != null)
             walletConnectButton.onClick.AddListener(() => ConnectWallet());
+
+        // Check if wallet is already connected from Next.js
+        CheckPreConnectedWallet();
+    }
+
+    void CheckPreConnectedWallet()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        try
+        {
+            string preConnectedAddress = GetPreConnectedWallet();
+            if (!string.IsNullOrEmpty(preConnectedAddress))
+            {
+                Debug.Log("Wallet already connected from web page: " + preConnectedAddress);
+                // Automatically connect with the pre-connected wallet
+                WalletConnected(preConnectedAddress);
+            }
+            else
+            {
+                Debug.Log("No pre-connected wallet found, showing connection UI");
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.Log("Error checking pre-connected wallet: " + e.Message);
+        }
+#endif
+    }
+
+    // This method can be called from JavaScript to set wallet address
+    public void OnWalletConnected(string address)
+    {
+        Debug.Log("Wallet connected from JavaScript: " + address);
+        WalletConnected(address);
     }
 
     public void ConnectWallet()

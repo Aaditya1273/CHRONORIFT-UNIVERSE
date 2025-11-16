@@ -10,6 +10,19 @@ mergeInto(LibraryManager.library, {
         return typeof window.oneWallet !== 'undefined';
     },
 
+    // Get pre-connected wallet address from Next.js
+    GetPreConnectedWallet: function() {
+        // Check if wallet address was set by Next.js
+        if (window.preConnectedWalletAddress) {
+            var address = window.preConnectedWalletAddress;
+            var bufferSize = lengthBytesUTF8(address) + 1;
+            var buffer = _malloc(bufferSize);
+            stringToUTF8(address, buffer, bufferSize);
+            return buffer;
+        }
+        return null;
+    },
+
     // Connect to OneWallet
     ConnectOneWallet: function(gameObjectName, callbackMethod, errorMethod) {
         var objName = UTF8ToString(gameObjectName);
